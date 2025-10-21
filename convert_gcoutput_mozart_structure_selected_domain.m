@@ -246,7 +246,10 @@ for ispec                                  = 1:varnum
     var_name_leng                          = length(var_name);
     if (var_name_leng > 12)
         disp(var_name);
+		% Line for older 'SpeciesConc_' for GEOSChem v13 and below (12-char prefix)
         spc_name                           = var_name(13:end);
+		% Line for newer 'SpeciesConcVV_' for GEOSChem v14 and above (14-char prefix)
+        % spc_name                           = var_name(15:end);
         spc_name_out                       = [spc_name,spc_suffix];
         varschema.Name                     = spc_name_out;
         varschema.Dimensions(1).Name       = 'lon';
@@ -287,3 +290,4 @@ end
 %%
 aa = ncinfo(filename_out);
 ncdisp(filename_out);
+
